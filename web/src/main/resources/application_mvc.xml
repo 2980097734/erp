@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/mvc
+						http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:component-scan base-package="com.guigu.erp.controller" annotation-config="true"/>
+	<!--开启注解驱动，支持@RequestMapping注解-->
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+	<mvc:cors>
+		<mvc:mapping path="/**"
+					 allowed-origins="*"
+					 allowed-methods="POST, GET, OPTIONS, DELETE, PUT"
+					 allowed-headers="Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+					 allow-credentials="true"/>
+	</mvc:cors>
+
+	<!--添加处理文件上传的处理器-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"></property>
+		<property name="maxUploadSize" value="104857600"></property>
+	</bean>
+
+	<!--开启aop，对类代理不加这个配置，后续配置无效-->
+	<aop:config proxy-target-class="true"></aop:config>
+
+
+</beans>
