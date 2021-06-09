@@ -31,7 +31,7 @@
     </listener>
 
     <servlet>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>application_mvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -39,7 +39,7 @@
         </init-param>
     </servlet>
     <servlet-mapping>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>application_mvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

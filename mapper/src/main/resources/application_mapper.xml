@@ -41,7 +41,7 @@
 				</bean>
 			</array>
 		</property>
-		<property name="typeAliasesPackage" value="com.guigu.erp.pojo"></property>
+		<property name="typeAliasesPackage" value="com.guigu.erp.domain"></property>
 	</bean>
 
 	<!-- 配置mybatis动态代理扫描 -->
