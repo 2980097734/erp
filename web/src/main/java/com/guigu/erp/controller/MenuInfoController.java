@@ -1,8 +1,8 @@
 package com.guigu.erp.controller;
 
 
-import com.guigu.erp.domain.sys.MenuInfo;
-import com.guigu.erp.service.sys.MenuInfoService;
+import com.guigu.erp.domain.MenuInfo;
+import com.guigu.erp.service.MenuInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
