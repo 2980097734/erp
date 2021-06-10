@@ -1,4 +1,4 @@
-package com.guigu.erp.domain;
+package com.guigu.erp.domain.sys;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

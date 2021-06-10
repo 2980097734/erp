@@ -1,7 +1,7 @@
-package com.guigu.erp.service;
+package com.guigu.erp.service.sys;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.guigu.erp.domain.MenuInfo;
+import com.guigu.erp.domain.sys.MenuInfo;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package com.guigu.erp.service.impl;
+package com.guigu.erp.service.sys.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.guigu.erp.mapper.MenuInfoMapper;
-import com.guigu.erp.domain.MenuInfo;
-import com.guigu.erp.service.MenuInfoService;
+import com.guigu.erp.mapper.sys.MenuInfoMapper;
+import com.guigu.erp.domain.sys.MenuInfo;
+import com.guigu.erp.service.sys.MenuInfoService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

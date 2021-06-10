@@ -1,24 +1,21 @@
 package com.guigu.erp.controller;
 
-
-import com.guigu.erp.domain.sys.MenuInfo;
-import com.guigu.erp.service.sys.MenuInfoService;
+import com.guigu.erp.domain.d.File;
+import com.guigu.erp.service.d.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @CrossOrigin
-public class MenuInfoController {
+public class FilesController {
 
     @Autowired
-    MenuInfoService menuInfoService;
+    private FileService fileService;
 
-    @RequestMapping("queryAllmenu")
-    public List<MenuInfo> queryAllmenus(){
-        return menuInfoService.queryAllmenu();
+    @RequestMapping("add")
+    public boolean insert(File file){
+        return fileService.save(file);
     }
 }
