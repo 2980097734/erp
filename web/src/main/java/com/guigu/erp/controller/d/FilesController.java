@@ -1,4 +1,4 @@
-package com.guigu.erp.controller;
+package com.guigu.erp.controller.d;
 
 import com.guigu.erp.domain.d.File;
 import com.guigu.erp.service.d.FileService;

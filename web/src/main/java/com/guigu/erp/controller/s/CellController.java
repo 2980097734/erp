@@ -1,8 +1,8 @@
-package com.guigu.erp.controller.c;
+package com.guigu.erp.controller.s;
 
 
-import com.guigu.erp.domain.m.Cell;
-import com.guigu.erp.service.m.CellService;
+import com.guigu.erp.domain.s.Cell;
+import com.guigu.erp.service.s.CellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

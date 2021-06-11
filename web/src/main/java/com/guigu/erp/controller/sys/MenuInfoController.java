@@ -1,4 +1,4 @@
-package com.guigu.erp.controller;
+package com.guigu.erp.controller.sys;
 
 
 import com.guigu.erp.domain.sys.MenuInfo;

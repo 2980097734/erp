@@ -1,8 +1,8 @@
-package com.guigu.erp.service.impl.m;
+package com.guigu.erp.service.impl.s;
 
-import com.guigu.erp.domain.m.Cell;
-import com.guigu.erp.mapper.m.CellMapper;
-import com.guigu.erp.service.m.CellService;
+import com.guigu.erp.domain.s.Cell;
+import com.guigu.erp.mapper.s.CellMapper;
+import com.guigu.erp.service.s.CellService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

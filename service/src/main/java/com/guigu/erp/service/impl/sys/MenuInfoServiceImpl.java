@@ -1,4 +1,4 @@
-package com.guigu.erp.service.sys.impl;
+package com.guigu.erp.service.impl.sys;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

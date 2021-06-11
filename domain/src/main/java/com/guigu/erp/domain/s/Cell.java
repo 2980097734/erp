@@ -1,4 +1,4 @@
-package com.guigu.erp.domain.m;
+package com.guigu.erp.domain.s;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 @TableName("s_cell")
+
 public class Cell {
     @TableId("id")
     private  String Code;
@@ -29,4 +30,5 @@ public class Cell {
     private  String Checker;
     private  String CheckTime;
     private  String CheckTag;
+
 }

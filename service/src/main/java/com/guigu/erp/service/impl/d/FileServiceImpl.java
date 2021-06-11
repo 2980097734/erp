@@ -1,4 +1,4 @@
-package com.guigu.erp.service.d.impl;
+package com.guigu.erp.service.impl.d;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.guigu.erp.domain.d.File;
