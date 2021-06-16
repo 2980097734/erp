@@ -1,4 +1,4 @@
-package com.guigu.erp.service.impl.s;
+package com.guigu.erp.service.s.impl;
 
 import com.guigu.erp.domain.s.Cell;
 import com.guigu.erp.mapper.s.CellMapper;
