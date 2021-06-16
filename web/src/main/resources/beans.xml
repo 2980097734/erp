@@ -59,7 +59,7 @@
         -->
         <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
                 <!--配置要扫描的mapper接口-->
-                <property name="basePackage" value="com.guigu.mapper"></property>
+                <property name="basePackage" value="com.guigu.erp.mapper"></property>
                 <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
         </bean>
 
