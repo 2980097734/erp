@@ -16,6 +16,6 @@ public class FilesController {
 
     @RequestMapping("add")
     public boolean insert(File file){
-        return fileService.save(file);
+        return fileService.insert(file);
     }
 }
