@@ -11,17 +11,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class ApplyController {
     @Autowired
     ApplyService applyService;
+
+    //查询
     @RequestMapping("queryAllApply.action")
-    public IPage<Apply> queryAllApply(@RequestParam(value = "pageno",defaultValue = "1") int pageno,
-                                      @RequestParam(value = "pagesize",defaultValue = "5") int pagesize,
-                                      Apply apply){
-        QueryWrapper<Apply> queryWrapper = new QueryWrapper<Apply>();
-        return applyService.page(new Page<Apply>(pageno,pagesize),null);
+    public List<Apply> queryAllApply(){
+        return applyService.All();
     }
+    //添加
+    @RequestMapping("addApply.action")
+    public boolean addApply(Apply apply){
+        return applyService.save(apply);
+    }
+    //查询未审核的生产计划
+//    @RequestMapping("queryByCheckTag.action")
+//    public List<Apply> queryByCheckTag(String checkTag){
+//        QueryWrapper<Apply> queryWrapper = new QueryWrapper<Apply>();
+//        queryWrapper.eq("checkTag",checkTag);
+//        return null;
+//    }
 
 }

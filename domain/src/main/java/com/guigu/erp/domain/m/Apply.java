@@ -1,10 +1,12 @@
 package com.guigu.erp.domain.m;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @TableName("m_apply")
@@ -26,4 +28,7 @@ public class Apply {
     private Date checkTime;
     private String checkTag;
     private String manufactureTag;
+
+    @TableField(exist = false)
+    List<Apply> All;
 }
