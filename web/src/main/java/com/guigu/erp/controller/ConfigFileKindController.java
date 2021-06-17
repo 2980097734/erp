@@ -1,8 +1,7 @@
 package com.guigu.erp.controller;
 
-
-import com.guigu.erp.domain.sys.MenuInfo;
-import com.guigu.erp.service.sys.MenuInfoService;
+import com.guigu.erp.domain.d.ConfigFileKind;
+import com.guigu.erp.service.d.ConfigFileKindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +11,13 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-public class MenuInfoController {
+public class ConfigFileKindController {
 
     @Autowired
-    MenuInfoService menuInfoService;
+    ConfigFileKindService configFileKindService;
 
-    @RequestMapping("queryAllmenu")
-    public List<MenuInfo> queryAllmenus(){
-        return menuInfoService.queryAllmenu();
+    @RequestMapping("queryconfig")
+    public List<ConfigFileKind> queryAll(){
+        return configFileKindService.queryconfig();
     }
 }
