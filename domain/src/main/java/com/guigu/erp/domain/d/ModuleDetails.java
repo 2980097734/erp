@@ -3,7 +3,11 @@ package com.guigu.erp.domain.d;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Data
 @TableName("d_module_details")
@@ -27,4 +31,10 @@ public class ModuleDetails {
     private String moduleDescribe;
     @TableField(value = "designer",exist = false)
     private String designer;
+    @TableField(value = "register",exist = false)
+    private String register;
+    @TableField(value = "registerTime",exist = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date registerTime;
 }

@@ -49,14 +49,13 @@ public class ModuleDetailsServiceImpl extends ServiceImpl<ModuleDetailsMapper, M
         for (ModuleDetails moduleDetailsDto:list)
             xx+=moduleDetailsDto.getCostPrice();
         module.setCostPriceSum(xx);
-        module.setRegister(file.getRegister());
-        module.setRegisterTime(file.getRegisterTime());
+        module.setRegister(getone.getRegister());
+        module.setRegisterTime(getone.getRegisterTime());
         module.setCheckTag("S001-0");
         module.setChangeTag("B002-0");
         String longId = moduleMapper.getLongId();
         String designId = IDUtil.getDesignId(longId);
         module.setDesignId(designId);
-        System.out.println(module);
         moduleService.save(module);
         int i = moduleService.selectMax();
         int x =1;
@@ -68,5 +67,22 @@ public class ModuleDetailsServiceImpl extends ServiceImpl<ModuleDetailsMapper, M
         this.saveBatch(list);
         file.setDesignModuleTag("W001-1");
         fileService.updateById(file);
+    }
+
+    @Override
+    public void addModuleDetails(List<ModuleDetails> list) {
+        double xx = 0;
+        for (ModuleDetails moduleDetailsDto:list)
+            xx+=moduleDetailsDto.getSubtotal();
+        Integer id = list.get(0).getParentId();
+        Module byId = moduleService.getById(id);
+        byId.setCostPriceSum(xx);
+        moduleService.updateById(byId);
+        int x =1;
+        for (ModuleDetails moduleDetailsDto:list) {
+            moduleDetailsDto.setDetailsNumber(x);
+            x++;
+        }
+        this.saveOrUpdateBatch(list);
     }
 }
