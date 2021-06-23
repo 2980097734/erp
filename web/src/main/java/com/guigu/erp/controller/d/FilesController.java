@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class FilesController {
@@ -17,5 +19,20 @@ public class FilesController {
     @RequestMapping("add")
     public boolean insert(File file){
         return fileService.insert(file);
+    }
+
+    @RequestMapping("queryfile")
+    public List<File> query(){
+        return fileService.select();
+    }
+
+    @RequestMapping("queryById")
+    public File queryById(Integer id){
+        return fileService.getById(id);
+    }
+
+    @RequestMapping("updatefile")
+    public boolean update(File file){
+        return fileService.update(file);
     }
 }

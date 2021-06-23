@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="domain" />
         <module name="mapper" />
-        <module name="service" />
+        <module name="domain" />
         <module name="web" />
+        <module name="service" />
       </profile>
     </annotationProcessing>
   </component>
