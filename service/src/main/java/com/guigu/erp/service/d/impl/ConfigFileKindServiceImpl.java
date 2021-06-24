@@ -14,7 +14,7 @@ import java.util.List;
 public class ConfigFileKindServiceImpl extends ServiceImpl<ConfigFileKindMapper, ConfigFileKind> implements ConfigFileKindService {
     @Override
     public List<ConfigFileKind> queryconfig() {
-        QueryWrapper<ConfigFileKind> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<ConfigFileKind> queryWrapper = new QueryWrapper<ConfigFileKind>();
         queryWrapper.eq("p_id",0);
         List<ConfigFileKind> parents = this.list(queryWrapper);
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -104,5 +105,41 @@ public class ProductMaterialController {
         QueryWrapper<ConfigFileKind> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("p_id",pId);
         return configFileKindService.list(queryWrapper);
+    }
+
+    @RequestMapping("queryUsers")
+    public String queryUsers(HttpSession session){
+        return (String) session.getAttribute("user");
+    }
+
+    @RequestMapping("queryAllModule1")
+    public IPage<Module> queryAllModule1(@RequestParam(value = "pageno",defaultValue = "1") int pageno,
+                                    @RequestParam(value = "pagesize",defaultValue = "10") int pagesize,
+                                    Module module, Date startTime, Date endTime){
+        QueryWrapper<Module> queryWrapper = new QueryWrapper<>();
+        if (!StringUtils.isEmpty(module.getFirstKindId()))
+            queryWrapper.eq("first_kind_id",module.getFirstKindId());
+        if (!StringUtils.isEmpty(module.getSecondKindId()))
+            queryWrapper.eq("second_kind_id",module.getSecondKindId());
+        if (!StringUtils.isEmpty(module.getThirdKindId()))
+            queryWrapper.eq("third_kind_id",module.getThirdKindId());
+        if (startTime!=null && endTime!=null)
+            queryWrapper.between("register_time",startTime,endTime);
+        if (startTime!=null && endTime==null)
+            queryWrapper.ge("register_time",startTime);
+        if (startTime==null && endTime!=null)
+            queryWrapper.le("register_time",endTime);
+        queryWrapper.eq("check_tag","S001-1");
+        return moduleService.page(new Page<Module>(pageno,pagesize),queryWrapper);
+    }
+    @RequestMapping("updateModule")
+    public void updateModule(Module module){
+        module.setCheckTag("S001-0");
+        moduleService.updateById(module);
+    }
+
+    @RequestMapping("addModuleDetails")
+    public void addModuleDetails(@RequestBody List<ModuleDetails> list){
+            moduleDetailsService.addModuleDetails(list);
     }
 }

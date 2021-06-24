@@ -30,10 +30,10 @@ public class ApplyController {
     }
     //查询未审核的生产计划
     @RequestMapping("queryByCheckTag.action")
-    public List<Apply> queryByCheckTag(Apply apply,String checkTag){
+    public List<Apply> queryByCheckTag(Apply apply){
         QueryWrapper<Apply> queryWrapper = new QueryWrapper<Apply>();
-        if (apply.getCheckTag().equals("s001-0")){
-            queryWrapper.like("check_tag",apply.getCheckTag().equals("s001-0"));
+        if (StringUtils.isEmpty(apply.getCheckTag())){
+            queryWrapper.like("check_tag","s001-0");
         }
         return applyService.list(queryWrapper);
     }
@@ -52,5 +52,14 @@ public class ApplyController {
         }
         return applyService.list(queryWrapper);
     }
-
+    //根据id查询
+    @RequestMapping("queryById.action")
+    public Apply queryById(int id){
+        return applyService.getById(id);
+    }
+    //根据id修改
+    @RequestMapping("updateApply.action")
+    public boolean updateApply(Apply apply){
+        return applyService.updateById(apply);
+    }
 }

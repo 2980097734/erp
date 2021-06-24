@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ModuleDetailsService extends IService<ModuleDetails> {
     public void addmodule(List<ModuleDetails> list);
+
+    public void addModuleDetails(List<ModuleDetails> list);
 }
