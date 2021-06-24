@@ -1,5 +1,6 @@
 package com.guigu.erp.service.d.impl;
 
+import com.alibaba.druid.util.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.guigu.erp.domain.d.ConfigFileKind;
@@ -10,6 +11,7 @@ import com.guigu.erp.service.d.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
         file.setProductId("100"+file.getFirstKindId()+file.getSecondKindId()+file.getThirdKindId()+"000001");
 //        System.out.println(file.getProductId());
         file.setRegister("胡总");
+        file.setFileChangeAmount(0);
         file.setCheckTag("S001-0");
         file.setChangeTag("D002-0");
         file.setPriceChangeTag("J001-0");
@@ -59,10 +62,42 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
     }
 
     @Override
+    public List<File> queryAl(File file) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<File>();
+        queryWrapper.eq("check_tag","S001-1");
+        if (!StringUtils.isEmpty(file.getFirstKindId())){
+            queryWrapper.eq("first_kind_id",file.getFirstKindId());
+        }
+        if (!StringUtils.isEmpty(file.getSecondKindId())){
+            queryWrapper.eq("second_kind_id",file.getSecondKindId());
+        }
+        if (!StringUtils.isEmpty(file.getThirdKindId())){
+            queryWrapper.eq("third_kind_id",file.getThirdKindId());
+        }
+        if (!StringUtils.isEmpty(file.getType())){
+            queryWrapper.eq("type",file.getType());
+        }
+        return this.list(queryWrapper);
+    }
+
+    @Override
     public boolean update(File file) {
         file.setCheckTag("S001-1");
         file.setChecker("胡总");
         file.setCheckTime(new Date());
         return this.updateById(file);
     }
+
+    @Override
+    public boolean update2(File file) {
+        File files = this.getById(file.getId());
+        int num =files.getFileChangeAmount()==null?0:files.getFileChangeAmount();
+        file.setChangeTag("D002-1");
+        file.setChanger("胡总");
+        file.setChangeTime(new Date());
+        file.setFileChangeAmount(num+1);
+        return this.updateById(file);
+    }
+
+
 }

@@ -12,4 +12,8 @@ public interface FileService extends IService<File> {
     public boolean update(File file);
 
     public List<File> select();
+
+    public List<File> queryAl(File file);
+
+    public boolean update2(File file);
 }
