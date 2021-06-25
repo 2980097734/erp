@@ -85,6 +85,22 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
         file.setCheckTag("S001-1");
         file.setChecker("胡总");
         file.setCheckTime(new Date());
+
+        QueryWrapper<ConfigFileKind> queryWrapper = new QueryWrapper<ConfigFileKind>();
+        queryWrapper.eq("kind_level","1").eq("kind_id",file.getFirstKindId());
+        ConfigFileKind configFileKind = configFileKindService.getOne(queryWrapper);
+        file.setFirstKindName(configFileKind.getKindName());
+
+        QueryWrapper<ConfigFileKind> queryWrapper1 = new QueryWrapper<ConfigFileKind>();
+        queryWrapper1.eq("kind_level","2").eq("kind_id",file.getSecondKindId());
+        ConfigFileKind configFileKind1 = configFileKindService.getOne(queryWrapper1);
+        file.setSecondKindName(configFileKind1.getKindName());
+
+        QueryWrapper<ConfigFileKind> queryWrapper2 = new QueryWrapper<ConfigFileKind>();
+        queryWrapper2.eq("kind_level","3").eq("kind_id",file.getThirdKindId());
+        ConfigFileKind configFileKind2 = configFileKindService.getOne(queryWrapper2);
+        file.setThirdKindName(configFileKind2.getKindName());
+
         return this.updateById(file);
     }
 
@@ -96,6 +112,22 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
         file.setChanger("胡总");
         file.setChangeTime(new Date());
         file.setFileChangeAmount(num+1);
+
+        QueryWrapper<ConfigFileKind> queryWrapper = new QueryWrapper<ConfigFileKind>();
+        queryWrapper.eq("kind_level","1").eq("kind_id",file.getFirstKindId());
+        ConfigFileKind configFileKind = configFileKindService.getOne(queryWrapper);
+        file.setFirstKindName(configFileKind.getKindName());
+
+        QueryWrapper<ConfigFileKind> queryWrapper1 = new QueryWrapper<ConfigFileKind>();
+        queryWrapper1.eq("kind_level","2").eq("kind_id",file.getSecondKindId());
+        ConfigFileKind configFileKind1 = configFileKindService.getOne(queryWrapper1);
+        file.setSecondKindName(configFileKind1.getKindName());
+
+        QueryWrapper<ConfigFileKind> queryWrapper2 = new QueryWrapper<ConfigFileKind>();
+        queryWrapper2.eq("kind_level","3").eq("kind_id",file.getThirdKindId());
+        ConfigFileKind configFileKind2 = configFileKindService.getOne(queryWrapper2);
+        file.setThirdKindName(configFileKind2.getKindName());
+
         return this.updateById(file);
     }
 
