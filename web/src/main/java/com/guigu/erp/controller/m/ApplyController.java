@@ -1,7 +1,11 @@
 package com.guigu.erp.controller.m;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.guigu.erp.domain.IDUtil;
+import com.guigu.erp.domain.d.File;
 import com.guigu.erp.domain.m.Apply;
+import com.guigu.erp.mapper.m.ApplyMapper;
+import com.guigu.erp.service.d.FileService;
 import com.guigu.erp.service.m.ApplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -17,6 +21,10 @@ import java.util.List;
 public class ApplyController {
     @Autowired
     ApplyService applyService;
+    @Autowired
+    FileService fileService;
+    @Autowired
+    ApplyMapper applyMapper;
     //查询
     @RequestMapping("queryAllApply.action")
     public List<Apply> queryAllApply(){
@@ -25,7 +33,13 @@ public class ApplyController {
     //添加
     @RequestMapping("addApply.action")
     public boolean addApply(Apply apply){
-        apply.setApplyId("300"+new Date() +"0001");
+        QueryWrapper<File> queryWrapper = new QueryWrapper<File>();
+        File file = fileService.getOne(queryWrapper);
+        String longId = applyMapper.getLongId();
+        String date = IDUtil.getApplyId(longId);
+        apply.setApplyId(date);
+        apply.setProductId(file.getProductId());
+        apply.setProductName(file.getProductName());
         apply.setCheckTag("0");
         apply.setManufactureTag("0");
         return applyService.save(apply);
