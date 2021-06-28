@@ -109,7 +109,7 @@ public class DFile {
     private Date checkTime;//复核时间
 
     @TableField("CHECK_TAG")
-    private String checkTag;//审核标志,S001-0: 等待审核,S001-1: 审核通过,S001-2: 审核不通过
+    private String checkTag;//审核标志,0: 等待审核,1: 审核通过,2: 审核不通过
 
     @TableField("CHANGER")
     private String changer;//变更人
@@ -118,27 +118,27 @@ public class DFile {
     private Date changeTime;//变更时间
 
     @TableField("CHANGE_TAG")
-    private String changeTag;/*档案变更标志,D002-0: 未变更,D002-1: 已变更*/
+    private String changeTag;/*档案变更标志,0: 未变更,1: 已变更*/
 
     @TableField("PRICE_CHANGE_TAG")
-    private String priceChangeTag;/*价格变更标志,J001-0：未变更,J001-1：已变更*/
+    private String priceChangeTag;/*价格变更标志,0：未变更,1：已变更*/
 
     @TableField("FILE_CHANGE_AMOUNT")
     private Integer fileChangeAmount;//档案变更累计
 
     @TableField("DELETE_TAG")
-    private String deleteTag;/*产品删除标志,C001-0: 未删除,C001-1: 已删除*/
+    private String deleteTag;/*产品删除标志,0: 未删除,1: 已删除*/
 
     @TableField("DESIGN_MODULE_TAG")
-    private String designModuleTag;/*物料组成标志,W001-0: 未设计,W001-1: 已设计*/
+    private String designModuleTag;/*物料组成标志,0: 未设计,1: 已设计*/
 
     @TableField("DESIGN_PROCEDURE_TAG")
-    private String designProcedureTag;/*工序组成标志,G001-0: 未设计,G001-1: 已设计*/
+    private String designProcedureTag;/*工序组成标志,0: 未设计,1: 已设计*/
 
 
 
     @TableField("DESIGN_CELL_TAG")
-    private String designCellTag;/*库存分配标志,K001-0: 未设计,K001-1: 已设计*/
+    private String designCellTag;/*库存分配标志,0: 未设计,1: 已设计*/
 
 
 

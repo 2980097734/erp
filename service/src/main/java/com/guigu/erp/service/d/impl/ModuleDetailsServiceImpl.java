@@ -51,8 +51,8 @@ public class ModuleDetailsServiceImpl extends ServiceImpl<ModuleDetailsMapper, M
         module.setCostPriceSum(xx);
         module.setRegister(getone.getRegister());
         module.setRegisterTime(getone.getRegisterTime());
-        module.setCheckTag("S001-0");
-        module.setChangeTag("B002-0");
+        module.setCheckTag("0");
+        module.setChangeTag("0");
         String longId = moduleMapper.getLongId();
         String designId = IDUtil.getDesignId(longId);
         module.setDesignId(designId);
@@ -65,7 +65,7 @@ public class ModuleDetailsServiceImpl extends ServiceImpl<ModuleDetailsMapper, M
             x++;
         }
         this.saveBatch(list);
-        file.setDesignModuleTag("W001-1");
+        file.setDesignModuleTag("1");
         fileService.updateById(file);
     }
 

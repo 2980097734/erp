@@ -11,6 +11,7 @@ import com.guigu.erp.service.m.SCellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,7 +29,7 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
     public boolean addSCll(SCell sCell) {
         System.out.println(sCell);
 
-        sCell.setCheckTag("S001-0");
+        sCell.setCheckTag("0");
         return this.save(sCell);
     }
     /**
@@ -40,9 +41,10 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
         System.out.println("queryAllSCll"+tag+":"+tag2);
            // 设置分页参数
         PageHelper.startPage(pageNo, pageSize);
-        List<DFile> sCells = sCellMapper.queryAllSCll(tag,tag2);
+        List<DFile> sCells = sCellMapper.queryAllSCll(tag);
+        System.out.println(sCells);
         // 封装分页对象
-        PageInfo<DFile> sCellPageInfo = new PageInfo<>(sCells);
+        PageInfo<DFile> sCellPageInfo = new PageInfo<DFile>(sCells);
         return sCellPageInfo;
     }
     /**
@@ -53,7 +55,7 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
     @Override
     public SCell queryByIdSCell(String productId) {
         System.out.println("queryByIdSCell的productId"+productId);
-        QueryWrapper<SCell> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SCell> queryWrapper = new QueryWrapper<SCell>();
         queryWrapper.eq("PRODUCT_ID",productId);
         return  this.getOne(queryWrapper);
     }
@@ -65,7 +67,7 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
     @Override
     public List<SCell> queryByIdSCell2(String productId) {
         System.out.println("queryByIdSCell2的productId"+productId);
-        QueryWrapper<SCell> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SCell> queryWrapper = new QueryWrapper<SCell>();
         queryWrapper.eq("PRODUCT_ID",productId);
         return  this.list(queryWrapper);
     }
@@ -75,9 +77,11 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
      * @return
      */
     @Override
-    public boolean amendCheckTag(int id, String CheckTag) {
+    public boolean amendCheckTag(int id, String CheckTag, String checker, Date checkTime) {
         SCell sCell = this.getById(id);
-        sCell.setCheckTag("S001-1");
+        sCell.setCheckTag(CheckTag);
+        sCell.setChecker(checker);
+        sCell.setCheckTime(checkTime);
         return this.updateById(sCell);
     }
     /**
@@ -87,8 +91,6 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
      */
     @Override
     public boolean amendSCll(SCell sCell) {
-        System.out.println(sCell);
-        sCell.setCheckTag("S001-2");
         return this.updateById(sCell);
     }
 

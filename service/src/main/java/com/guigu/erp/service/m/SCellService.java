@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.guigu.erp.domain.m.DFile;
 import com.guigu.erp.domain.m.SCell;
 
+import java.util.Date;
 import java.util.List;
 
 public interface SCellService extends IService<SCell> {
@@ -36,7 +37,7 @@ public interface SCellService extends IService<SCell> {
      * @param id,CheckTag
      * @return
      */
-    boolean amendCheckTag(int id, String CheckTag);
+    boolean amendCheckTag(int id, String CheckTag, String checker, Date checkTime);
     /**
      * 制作安全库存配置单-修改
      * @param sCell
