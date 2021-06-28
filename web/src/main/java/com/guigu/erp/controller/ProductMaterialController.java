@@ -52,7 +52,7 @@ public class ProductMaterialController {
         if (startTime==null && endTime!=null)
             queryWrapper.le("register_time",endTime);
         queryWrapper.eq("type","Y001-1");
-        queryWrapper.eq("DESIGN_MODULE_TAG","W001-0");
+        queryWrapper.eq("DESIGN_MODULE_TAG","0");
         return fileService.page(new Page<File>(pageno,pagesize),queryWrapper);
     }
 
@@ -129,17 +129,22 @@ public class ProductMaterialController {
             queryWrapper.ge("register_time",startTime);
         if (startTime==null && endTime!=null)
             queryWrapper.le("register_time",endTime);
-        queryWrapper.eq("check_tag","S001-1");
+        queryWrapper.eq("check_tag","1");
         return moduleService.page(new Page<Module>(pageno,pagesize),queryWrapper);
     }
     @RequestMapping("updateModule")
     public void updateModule(Module module){
-        module.setCheckTag("S001-0");
+        module.setCheckTag("0");
         moduleService.updateById(module);
     }
 
     @RequestMapping("addModuleDetails")
     public void addModuleDetails(@RequestBody List<ModuleDetails> list){
             moduleDetailsService.addModuleDetails(list);
+    }
+
+    @RequestMapping("/list")
+    public List<ConfigFileKind> list(){
+        return configFileKindService.list();
     }
 }

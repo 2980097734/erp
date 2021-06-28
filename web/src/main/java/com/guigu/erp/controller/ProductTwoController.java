@@ -47,7 +47,7 @@ public class ProductTwoController {
             queryWrapper.ge("register_time",startTime);
         if (startTime==null && endTime!=null)
             queryWrapper.le("register_time",endTime);
-        queryWrapper.eq("check_tag","S001-0");
+        queryWrapper.eq("check_tag","0");
         return moduleService.page(new Page<Module>(pageno,pagesize),queryWrapper);
     }
 

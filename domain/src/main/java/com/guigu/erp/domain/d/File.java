@@ -60,4 +60,8 @@ public class File {
     private String designModuleTag;
     private String designProcedureTag;
     private String designCellTag;
+    @TableField(exist = false)
+    @DateTimeFormat(pattern ="yyyy-MM-dd HH:mm:ss" )
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date registerTime2;
 }

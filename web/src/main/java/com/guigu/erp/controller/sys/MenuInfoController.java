@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping("menu")
 public class MenuInfoController {
 
     @Autowired

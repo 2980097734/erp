@@ -42,7 +42,7 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
         PageHelper.startPage(pageNo, pageSize);
         List<DFile> sCells = sCellMapper.queryAllSCll(tag,tag2);
         // 封装分页对象
-        PageInfo<DFile> sCellPageInfo = new PageInfo<>(sCells);
+        PageInfo<DFile> sCellPageInfo = new PageInfo<DFile>(sCells);
         return sCellPageInfo;
     }
     /**
@@ -53,7 +53,7 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
     @Override
     public SCell queryByIdSCell(String productId) {
         System.out.println("queryByIdSCell的productId"+productId);
-        QueryWrapper<SCell> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SCell> queryWrapper = new QueryWrapper<SCell>();
         queryWrapper.eq("PRODUCT_ID",productId);
         return  this.getOne(queryWrapper);
     }
@@ -65,7 +65,7 @@ public class SCellServiceImpl extends ServiceImpl<SCellMapper, SCell> implements
     @Override
     public List<SCell> queryByIdSCell2(String productId) {
         System.out.println("queryByIdSCell2的productId"+productId);
-        QueryWrapper<SCell> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SCell> queryWrapper = new QueryWrapper<SCell>();
         queryWrapper.eq("PRODUCT_ID",productId);
         return  this.list(queryWrapper);
     }

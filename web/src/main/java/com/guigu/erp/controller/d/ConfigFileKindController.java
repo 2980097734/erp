@@ -20,4 +20,6 @@ public class ConfigFileKindController {
     public List<ConfigFileKind> queryAll(){
         return configFileKindService.queryconfig();
     }
+
+
 }

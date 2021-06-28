@@ -44,7 +44,7 @@ public class DFileServiceImpl extends ServiceImpl<DFileMapper, DFile> implements
      */
     @Override
     public IPage<DFile> queryAllDFile(int pageno, int pagesize, DFile dFile) {
-        QueryWrapper<DFile> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<DFile> queryWrapper = new QueryWrapper<DFile>();
         queryWrapper.eq("CHECK_TAG","S001-1");
 //        hhy
         if(!StringUtils.isEmpty(dFile.getProductName())){
@@ -61,7 +61,7 @@ public class DFileServiceImpl extends ServiceImpl<DFileMapper, DFile> implements
     @Override
     public DFile queryByIdDFile(String productId) {
         System.out.println("queryByIdDFile1的productId"+productId);
-        QueryWrapper<DFile> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<DFile> queryWrapper = new QueryWrapper<DFile>();
         queryWrapper.eq("PRODUCT_ID",productId);
         return  this.getOne(queryWrapper);
     }
@@ -73,7 +73,7 @@ public class DFileServiceImpl extends ServiceImpl<DFileMapper, DFile> implements
     @Override
     public List<DFile> queryByIdDFile2(String productId) {
         System.out.println("queryByIdDFile2的productId"+productId);
-        QueryWrapper<DFile> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<DFile> queryWrapper = new QueryWrapper<DFile>();
         queryWrapper.eq("PRODUCT_ID",productId);
         return  this.list(queryWrapper);
     }
