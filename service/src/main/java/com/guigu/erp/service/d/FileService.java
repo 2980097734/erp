@@ -23,4 +23,8 @@ public interface FileService extends IService<File> {
     ResultUtil recoveryById(int id);
     ResultUtil foreverDelete(int id);
     boolean selectByProductId(String productId);
+
+    public List<File> queryAl(File file);
+
+    public boolean update2(File file);
 }

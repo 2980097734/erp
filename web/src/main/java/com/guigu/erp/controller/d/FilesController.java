@@ -26,6 +26,11 @@ public class FilesController {
         return fileService.select();
     }
 
+    @RequestMapping("queryAl")
+    public List<File> queryAl(File file){
+        return fileService.queryAl(file);
+    }
+
     @RequestMapping("queryById")
     public File queryById(Integer id){
         return fileService.getById(id);
@@ -34,5 +39,10 @@ public class FilesController {
     @RequestMapping("updatefile")
     public boolean update(File file){
         return fileService.update(file);
+    }
+
+    @RequestMapping("updatefile2")
+    public boolean update2(File file){
+        return fileService.update2(file);
     }
 }
