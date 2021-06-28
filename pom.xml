@@ -33,6 +33,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.4</version>
+            </dependency>
+            <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
                 <version>${fileupload.version}</version>
@@ -213,7 +218,7 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/</path>
-                    <port>8888</port>
+                    <port>8080</port>
                 </configuration>
             </plugin>
         </plugins>
