@@ -3,13 +3,13 @@ package com.guigu.erp.controller.m;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.guigu.erp.domain.m.Apply;
 import com.guigu.erp.service.m.ApplyService;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -17,7 +17,6 @@ import java.util.List;
 public class ApplyController {
     @Autowired
     ApplyService applyService;
-
     //查询
     @RequestMapping("queryAllApply.action")
     public List<Apply> queryAllApply(){
@@ -26,6 +25,9 @@ public class ApplyController {
     //添加
     @RequestMapping("addApply.action")
     public boolean addApply(Apply apply){
+        apply.setApplyId("300"+new Date() +"0001");
+        apply.setCheckTag("0");
+        apply.setManufactureTag("0");
         return applyService.save(apply);
     }
     //查询未审核的生产计划
@@ -33,7 +35,7 @@ public class ApplyController {
     public List<Apply> queryByCheckTag(Apply apply){
         QueryWrapper<Apply> queryWrapper = new QueryWrapper<Apply>();
         if (StringUtils.isEmpty(apply.getCheckTag())){
-            queryWrapper.like("check_tag","s001-0");
+            queryWrapper.like("check_tag","0");
         }
         return applyService.list(queryWrapper);
     }
