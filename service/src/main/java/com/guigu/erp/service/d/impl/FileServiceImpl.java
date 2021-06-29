@@ -27,13 +27,13 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
 //        System.out.println(file.getProductId());
         file.setRegister("胡总");
         file.setFileChangeAmount(0);
-        file.setCheckTag("S001-0");
-        file.setChangeTag("D002-0");
-        file.setPriceChangeTag("J001-0");
-        file.setDeleteTag("C001-0");
-        file.setDesignModuleTag("W001-0");
-        file.setDesignProcedureTag("G001-0");
-        file.setDesignCellTag("K001-0");
+        file.setCheckTag("0");
+        file.setChangeTag("0");
+        file.setPriceChangeTag("0");
+        file.setDeleteTag("0");
+        file.setDesignModuleTag("0");
+        file.setDesignProcedureTag("0");
+        file.setDesignCellTag("0");
         file.setRegisterTime(new Date());
         //id1,id2,id3
         QueryWrapper<ConfigFileKind> queryWrapper = new QueryWrapper<ConfigFileKind>();
@@ -57,14 +57,14 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
     @Override
     public List<File> select() {
         QueryWrapper<File> queryWrapper = new QueryWrapper<File>();
-        queryWrapper.eq("check_tag","S001-0");
+        queryWrapper.eq("check_tag","0");
         return this.list(queryWrapper);
     }
 
     @Override
     public List<File> queryAl(File file) {
         QueryWrapper<File> queryWrapper = new QueryWrapper<File>();
-        queryWrapper.eq("check_tag","S001-1");
+        queryWrapper.eq("check_tag","1");
         if (!StringUtils.isEmpty(file.getFirstKindId())){
             queryWrapper.eq("first_kind_id",file.getFirstKindId());
         }
@@ -82,7 +82,7 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
 
     @Override
     public boolean update(File file) {
-        file.setCheckTag("S001-1");
+        file.setCheckTag("1");
         file.setChecker("胡总");
         file.setCheckTime(new Date());
 
@@ -108,7 +108,8 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
     public boolean update2(File file) {
         File files = this.getById(file.getId());
         int num =files.getFileChangeAmount()==null?0:files.getFileChangeAmount();
-        file.setChangeTag("D002-1");
+        file.setCheckTag("0");
+        file.setChangeTag("1");
         file.setChanger("胡总");
         file.setChangeTime(new Date());
         file.setFileChangeAmount(num+1);
@@ -129,6 +130,69 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
         file.setThirdKindName(configFileKind2.getKindName());
 
         return this.updateById(file);
+    }
+
+    @Override
+    public List<File> querydelete(File file) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<File>();
+        queryWrapper.eq("delete_tag","0").eq("check_tag","1");
+        if (!StringUtils.isEmpty(file.getFirstKindId())){
+            queryWrapper.eq("first_kind_id",file.getFirstKindId());
+        }
+        if (!StringUtils.isEmpty(file.getSecondKindId())){
+            queryWrapper.eq("second_kind_id",file.getSecondKindId());
+        }
+        if (!StringUtils.isEmpty(file.getThirdKindId())){
+            queryWrapper.eq("third_kind_id",file.getThirdKindId());
+        }
+        if (!StringUtils.isEmpty(file.getType())){
+            queryWrapper.eq("type",file.getType());
+        }
+        return this.list(queryWrapper);
+    }
+
+    @Override
+    public boolean delete(File file) {
+        file.setDeleteTag("1");
+        file.setCheckTag("0");
+        file.setChangeTag("0");
+        file.setPriceChangeTag("0");
+        file.setDesignModuleTag("0");
+        file.setDesignProcedureTag("0");
+        file.setDesignCellTag("0");
+        return this.updateById(file);
+    }
+
+    @Override
+    public List<File> querydelete2(File file) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<File>();
+        queryWrapper.eq("delete_tag","1");
+        if (!StringUtils.isEmpty(file.getFirstKindId())){
+            queryWrapper.eq("first_kind_id",file.getFirstKindId());
+        }
+        if (!StringUtils.isEmpty(file.getSecondKindId())){
+            queryWrapper.eq("second_kind_id",file.getSecondKindId());
+        }
+        if (!StringUtils.isEmpty(file.getThirdKindId())){
+            queryWrapper.eq("third_kind_id",file.getThirdKindId());
+        }
+        if (!StringUtils.isEmpty(file.getType())){
+            queryWrapper.eq("type",file.getType());
+        }
+        return this.list(queryWrapper);
+    }
+
+    @Override
+    public boolean delete2(File file) {
+        file.setDeleteTag("0");
+        return this.updateById(file);
+    }
+
+    @Override
+    public List<File> querydelete3() {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<File>();
+        queryWrapper.eq("delete_tag","1");
+        return this.list(queryWrapper);
     }
 
 
