@@ -1,4 +1,4 @@
-package com.guigu.erp.controller;
+package com.guigu.erp.controller.s;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
